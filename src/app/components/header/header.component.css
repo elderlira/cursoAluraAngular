@@ -1,6 +1,5 @@
 .cabecalho {
     display: flex;
-    max-width: 1200px;
     background-color: rgb(30, 87, 156);
     justify-content: space-between;
 }
