@@ -11,7 +11,7 @@ export class CriarPensamentoComponent {
     id: '1',
     conteudo: '',
     autoria: '',
-    modelo: 'modelo1'
+    modelo: 'modelo3'
   }
 
   criarPensamento() {
@@ -19,6 +19,6 @@ export class CriarPensamentoComponent {
   }
 
   cancelarPensamento(): void {
-    alert('Cancelar')
+    window.history.go(-1)
   }
 }
