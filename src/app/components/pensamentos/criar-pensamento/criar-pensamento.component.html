@@ -1,6 +1,6 @@
 <section class="container criar-pensamentos ff-inter">
     <header class="header">
-        <h2>Adicione um <br>pensamento novo:</h2>
+        <h2>{{pensamento.id === 0 ? 'Adicione um' : 'Atualizar seu'}}  <br>pensamento:</h2>
     </header>
     <form>
         <label for="pensamento">Pensamento</label>
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="acoes">
-                <button (click)="criarPensamento()" class="botao">Salvar</button>
+                <button (click)="pensamento.id === 0 ? criarPensamento() : atualizar()" class="botao">{{pensamento.id !== 0 ? 'Atualizar' : 'Salvar'}} </button>
                 <button (click)="cancelarPensamento()" class="botao">Cancelar</button>
             </div>
         </div>
