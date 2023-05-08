@@ -28,11 +28,16 @@ private readonly API = 'http://localhost:3000/pensamento'
     return this.http.get<Pensamento>(`${this.API}/${id}`)
   }
 
-  excluirPensamento(id: number) {
+  excluirPensamento(id: number): Observable<Pensamento> {
     return this.http.delete<Pensamento>(`${this.API}/${id}`)
+  }
+
+  atualizarPensamento(id: number, pensamento: Pensamento): Observable<Pensamento> {
+    return this.http.put<Pensamento>(`${this.API}/${id}`, pensamento)
   }
 
   retornar(): void {
     this.router.navigate(['/listarPensamento'])
   }
+
 }
