@@ -9,10 +9,12 @@
         </div>
     </div>
 </section>
+<app-botao [haMaisMensagem]="haMaisMensagem" (click)="verificarNovasMensagens()"></app-botao>
 
 <!--
 template nomeado para o caso else ser chamado
 -->
+
 <ng-template #chamarQuandoNaoTiverPensamento>
     <div class="ff-inter sem-pensamentos">
         <p>Ainda não há pensamentos cadastrados!</p>
