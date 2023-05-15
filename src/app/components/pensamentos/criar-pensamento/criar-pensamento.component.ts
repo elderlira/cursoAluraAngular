@@ -16,7 +16,8 @@ export class CriarPensamentoComponent {
     id: 0,
     conteudo: '',
     autoria: '',
-    modelo: 'modelo3'
+    modelo: 'modelo3',
+    favorito: false
   }
 
   formulario!: FormGroup;
@@ -38,7 +39,8 @@ export class CriarPensamentoComponent {
         Validators.maxLength(6),
         lowerCaseValidator
       ])],
-      modelo: ['', Validators.required]
+      modelo: ['', Validators.required],
+      favorito: [false]
     }) 
       const id = this.route.snapshot.paramMap.get('id')
       if(!id) {

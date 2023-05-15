@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Pensamento } from '../interface/pensamento';
+import { PensamentoService } from '../service/pensamento.service';
 
 @Component({
   selector: 'app-pensamento',
@@ -12,7 +13,14 @@ export class PensamentoComponent {
     id: 0,
     conteudo: 'Titulo do card',
     autoria: 'Autor do card',
-    modelo: 'modelo3'
+    modelo: 'modelo3',
+    favorito: false
+  }
+
+  constructor(
+    private service: PensamentoService
+  ) {
+
   }
 
   selecionandoClassAutomaticamente(): string {
@@ -20,6 +28,17 @@ export class PensamentoComponent {
       return 'pensamento-g'
     }
     return ' pensamento-p'
+  }
+
+  verificarFavorito(): string {
+    if(!this.pensamento.favorito) {
+      return 'inativo'
+    }
+    return 'ativo'
+  }
+
+  alternarFavorito() {
+    this.service.mudarFavorito(this.pensamento).subscribe()
   }
 
 }

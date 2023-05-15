@@ -1,22 +1,32 @@
 {
-    "pensamento": [
-        {
-            "id": 1,
-            "conteudo": "Novo conteudo a ser exibido",
-            "autoria": "Dev 1",
-            "modelo": "modelo1"
-        },
-        {
-            "id": 2,
-            "conteudo": "Novo conteudo a ser exibido 2",
-            "autoria": "Dev 2",
-            "modelo": "modelo1"
-        },
-        {
-            "id": 3,
-            "conteudo": "Novo conteudo a ser exibido 3",
-            "autoria": "Dev 3",
-            "modelo": "modelo1"
-        }
-    ]
+  "pensamento": [
+    {
+      "id": 1,
+      "conteudo": "Novo conteudo a ser exibido",
+      "autoria": "Dev 1",
+      "modelo": "modelo1",
+      "favorito": true
+    },
+    {
+      "id": 2,
+      "conteudo": "Novo conteudo a ser exibido 2",
+      "autoria": "Dev 2",
+      "modelo": "modelo1",
+      "favorito": true
+    },
+    {
+      "id": 3,
+      "conteudo": "Novo conteudo a ser exibido 3",
+      "autoria": "Dev 3",
+      "modelo": "modelo1",
+      "favorito": false
+    },
+    {
+      "id": 4,
+      "conteudo": "Titulo do Card",
+      "autoria": "autor",
+      "modelo": "modelo2",
+      "favorito": false
+    }
+  ]
 }
