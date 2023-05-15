@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Pensamento } from '../interface/pensamento';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -15,9 +15,15 @@ private readonly API = 'http://localhost:3000/pensamento'
     private http: HttpClient,
     private router: Router,
     ) {}
+
   
-  listar(): Observable<Pensamento[]> {
-    return this.http.get<Pensamento[]>(this.API)
+  listar(paginaAtual: number): Observable<Pensamento[]> {
+    let limit: number = 2
+    let params = new HttpParams()
+      .set("_page", paginaAtual)
+      .set("_limit", limit)
+
+    return this.http.get<Pensamento[]>(this.API, { params })
   }
 
   criarPensamento(pensamento: Pensamento): Observable<Pensamento> {
