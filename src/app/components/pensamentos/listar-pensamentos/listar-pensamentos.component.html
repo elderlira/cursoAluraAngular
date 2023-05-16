@@ -10,7 +10,11 @@
             (keyup)="pesquisar()"
         >
         <img src="assets/imagens/lupa.png" style="width:15px; position: fixed; margin-top: 80px; margin-left: 800px;" alt="Lupa">
-        <button routerLink="/criarPensamento" class="botao">Adicionar pensamento</button>
+        <div class="botoes">
+            <button class="botao">Lista pensamentos</button>
+            <button class="botao">Meus favoritos</button>
+            <button routerLink="/criarPensamento" class="botao">Novo pensamento</button>
+        </div>
     </header>
     <div class="mural" *ngIf="listaPensamentos.length > 0, else chamarQuandoNaoTiverPensamento">
         <div *ngFor="let i of listaPensamentos">
