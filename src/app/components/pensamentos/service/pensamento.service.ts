@@ -17,20 +17,21 @@ private readonly API = 'http://localhost:3000/pensamento'
     ) {}
 
   
-  listar(paginaAtual: number, filtro: string): Observable<Pensamento[]> {
+  listar(paginaAtual: number, filtro: string, favorito: boolean): Observable<Pensamento[]> {
     let limit: number = 2
     let params = new HttpParams()
-      .set("q", filtro)
+      .set("_page", paginaAtual)
+      .set("_limit", limit)
 
-    if(!filtro) {
-      let params = new HttpParams()
-        .set("_page", paginaAtual)
-        .set("_limit", limit)
-      return this.http.get<Pensamento[]>(this.API, { params })
+    if(filtro) {
+      params = params.set("q", filtro)
     }  
 
-    return this.http.get<Pensamento[]>(this.API, { params })
+    if(favorito) {
+      params = params.set('favorito', true)
+    }
 
+    return this.http.get<Pensamento[]>(this.API, { params })
   }
 
   criarPensamento(pensamento: Pensamento): Observable<Pensamento> {
@@ -52,7 +53,6 @@ private readonly API = 'http://localhost:3000/pensamento'
   mudarFavorito(pensamento: Pensamento): Observable<Pensamento> {
     pensamento.favorito = !pensamento.favorito
     return this.atualizarPensamento(pensamento.id!, pensamento)
-
   }
 
   retornar(): void {
