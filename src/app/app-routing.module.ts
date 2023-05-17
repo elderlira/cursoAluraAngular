@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouteReuseStrategy, RouterModule, Routes } from '@angular/router';
+
+import { CustomReuseStrategy } from './custom-reuse-strategy';
 import { CriarPensamentoComponent } from './components/pensamentos/criar-pensamento/criar-pensamento.component';
 import { ListarPensamentosComponent } from './components/pensamentos/listar-pensamentos/listar-pensamentos.component';
 import { ExcluirPensamentoComponent } from './components/pensamentos/excluir-pensamento/excluir-pensamento.component';
 
 const routes: Routes = [
   {
-    path: '',
-    redirectTo: 'listarPensamento',
-    pathMatch: 'full'
+    path: 'listarPensamento',
+    component: ListarPensamentosComponent,
+    data: {
+      reuseComponent: true
+    }
   },
   {
     path: 'criarPensamento',
@@ -29,7 +33,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  exports: [RouterModule],
+  providers: [
+    {provide: RouteReuseStrategy, useClass: CustomReuseStrategy}
+  ],
 })
 export class AppRoutingModule { }
