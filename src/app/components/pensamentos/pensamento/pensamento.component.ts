@@ -16,12 +16,11 @@ export class PensamentoComponent {
     modelo: 'modelo3',
     favorito: false
   }
+  @Input() listaFavorita: Pensamento[] = []
 
   constructor(
     private service: PensamentoService
-  ) {
-
-  }
+  ) {}
 
   selecionandoClassAutomaticamente(): string {
     if(this.pensamento.conteudo.length > 256) {
@@ -38,7 +37,9 @@ export class PensamentoComponent {
   }
 
   alternarFavorito() {
-    this.service.mudarFavorito(this.pensamento).subscribe()
+    this.service.mudarFavorito(this.pensamento).subscribe(()=> {
+      this.listaFavorita.splice(this.listaFavorita.indexOf(this.pensamento), 1)
+    })
   }
 
 }
